@@ -5,7 +5,7 @@ import os
 # ==============================================
 
 # Bot Token (from @BotFather)
-BOT_TOKEN = os.getenv("8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg")
+BOT_TOKEN = "8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg"
 
 # Owner IDs (Telegram user IDs of developers/admins)
 OWNER_IDS = [7673097445, 5666606072]
