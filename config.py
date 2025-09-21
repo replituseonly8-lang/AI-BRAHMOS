@@ -47,7 +47,7 @@ EDIT_MODEL = "replicate/google/nano-banana"
 # No free talking in groups
 CHAT_API_BASE = "https://api.akashiverse.com/v1"
 CHAT_API_ENDPOINT = f"{CHAT_API_BASE}/chat/completions"
-CHAT_MODEL = "gpt-4.1"
+CHAT_MODEL = "stream/gpt-5:nostream"
 
 # ==============================================
 # 🎤 TEXT-TO-SPEECH API
