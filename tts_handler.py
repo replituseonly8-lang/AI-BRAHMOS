@@ -2,6 +2,7 @@ import requests
 import config
 import io
 from utils import AnimatedLoader
+from telebot import types  # Make sure this is imported for InlineKeyboardButton
 
 def generate_tts(text, voice="nova", bot=None, chat_id=None):
     """Generate TTS using ReflexAI endpoint"""
@@ -209,7 +210,11 @@ Contact @Rystrix to upgrade!""", parse_mode="Markdown")
                 
         except Exception as e:
             print(f"[DEBUG] TTS error: {e}")
-            bot.reply_to(message, "💥 **Error:** Something went wrong while generating speech. Please try again!")def handle_upgrade_premium_callback(bot, call):
+            bot.reply_to(message, "💥 **Error:** Something went wrong while generating speech. Please try again!")
+
+
+# ========================= FIXED LINE =========================
+def handle_upgrade_premium_callback(bot, call):
     """Handle upgrade premium callback with safe text"""
     upgrade_text = """💎 **Upgrade to Premium**
 
@@ -231,6 +236,8 @@ Premium users get the full BrahMos AI experience without any limits."""
 
     safe_edit_message(bot, call.message.chat.id, call.message.message_id, upgrade_text, keyboard, parse_mode="Markdown")
 
+
+# ========================= Other quick callbacks =========================
 def handle_quick_chat_callback(bot, call, chat_mode, user_waiting_for_chat):
     """Handle quick chat callback"""
     user_id = call.from_user.id
@@ -256,49 +263,4 @@ I'm now ready for a conversation! Just type your message and I'll respond with i
 **What would you like to talk about?**""", parse_mode="Markdown")
 
 def handle_quick_image_callback(bot, call, user_waiting_for_image):
-    """Handle quick image callback"""
-    user_id = call.from_user.id
-    user_waiting_for_image.add(user_id)
-    bot.answer_callback_query(call.id, "Image mode activated! Send me your prompt.")
-    bot.send_message(call.message.chat.id, """🎨 **Image Generation Mode Activated!**
-
-Send me a description of what you want to create and I'll generate an image for you.
-
-**Examples:**
-• "cyberpunk samurai warrior"
-• "sunset over mountains"
-• "cute cat in space suit"
-
-💡 **Tip:** Be descriptive for better results!""", parse_mode="Markdown")
-
-def handle_quick_tts_callback(bot, call, user_waiting_for_tts):
-    """Handle quick TTS callback"""
-    user_id = call.from_user.id
-    user_waiting_for_tts.add(user_id)
-    bot.answer_callback_query(call.id, "TTS mode activated! Send me text to convert.")
-    bot.send_message(call.message.chat.id, """🎤 **Text-to-Speech Mode Activated!**
-
-Send me any text and I'll convert it to speech for you.
-
-**Examples:**
-• "Hello, how are you today?"
-• "Welcome to BrahMos AI!"
-• "This is a test of speech synthesis"
-
-💡 **Tip:** Keep text under 500 characters for best results!""", parse_mode="Markdown")
-
-def handle_quick_edit_callback(bot, call, user_waiting_for_edit):
-    """Handle quick edit callback"""
-    user_id = call.from_user.id
-    bot.answer_callback_query(call.id, "Edit mode ready! Use /edit [description] first.")
-    bot.send_message(call.message.chat.id, """✏️ **Photo Editing Mode!**
-
-**Step 1:** Use `/edit [description]` command
-**Step 2:** Upload the photo you want to edit
-
-**Examples:**
-• `/edit make it darker and more dramatic`
-• `/edit add sunglasses and a hat`  
-• `/edit change background to beach`
-
-💡 **Tip:** Be specific about what changes you want!""", parse_mode="Markdown")
+    """
