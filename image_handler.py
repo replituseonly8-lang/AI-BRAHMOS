@@ -41,7 +41,10 @@ def generate_image(full_prompt: str, bot=None, chat_id=None):
             "size": "1024x1024"
         }
 
-        headers = {"Content-Type": "application/json"}
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {config.API_KEY}"
+        }
 
         # Use POST with JSON payload for new API
         resp = requests.post(
@@ -193,7 +196,10 @@ def edit_image(image_data: bytes, edit_prompt: str, bot=None, chat_id=None):
             "size": "1024x1024"
         }
 
-        headers = {"Content-Type": "application/json"}
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {config.API_KEY}"
+        }
 
         # Use POST with JSON payload for edit API
         resp = requests.post(
