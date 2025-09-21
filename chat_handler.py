@@ -3,6 +3,7 @@ import json
 import re
 import config
 from utils import AnimatedLoader
+from config import API_KEY
 
 # Global conversation memory
 conversation_memory = {}
