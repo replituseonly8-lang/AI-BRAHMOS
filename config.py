@@ -5,12 +5,12 @@ import os
 # ==============================================
 
 # Bot Token (from @BotFather) - REQUIRED from environment
-BOT_TOKEN = os.getenv("8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg")
+BOT_TOKEN = "8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg"
 if not BOT_TOKEN:
     raise ValueError("BOT_TOKEN environment variable is required")
 
 # API Key for all AI services - REQUIRED from environment
-API_KEY = os.getenv("sk-friend-01-8b3f9a47e9b14e2db1a7f5cae3d912a1")
+API_KEY = "sk-friend-01-8b3f9a47e9b14e2db1a7f5cae3d912a1"
 if not API_KEY:
     raise ValueError("API_KEY environment variable is required")
 
