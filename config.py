@@ -4,11 +4,15 @@ import os
 # 🔑 TELEGRAM BOT
 # ==============================================
 
-# Bot Token (from @BotFather)
-BOT_TOKEN = os.getenv("BOT_TOKEN", "8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg")
+# Bot Token (from @BotFather) - REQUIRED from environment
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN environment variable is required")
 
-# API Key for all AI services
-API_KEY = os.getenv("API_KEY", "sk-friend-02-3a4f2e9c8d7b6a5f4e3d2c1b0a9f8e7d")
+# API Key for all AI services - REQUIRED from environment
+API_KEY = os.getenv("API_KEY")
+if not API_KEY:
+    raise ValueError("API_KEY environment variable is required")
 
 # Owner IDs (Telegram user IDs of developers/admins)
 OWNER_IDS = [7673097445, 5666606072]
@@ -30,7 +34,7 @@ BOT_NAMES = ["BrahMos", "Brahmos", "brahMos", "brahmos",
 #   - Bot requests: http://api.akashiverse.com/v1/models with Imagen3 model
 #   - API returns raw image (binary, no JSON, no key required)
 #   - Bot sends that image back
-IMAGE_API_URL = "http://api.akashiverse.com/v1/models"
+IMAGE_API_URL = "https://api.akashiverse.com/v1/models"
 IMAGE_MODEL = "firebase/imagen-3"
 EDIT_MODEL = "replicate/google/nano-banana"
 
