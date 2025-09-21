@@ -30,6 +30,7 @@ BOT_NAMES = ["BrahMos", "Brahmos", "brahMos", "brahmos",
 IMAGE_API_URL = "http://api.akashiverse.com/v1/models"
 IMAGE_MODEL = "firebase/imagen-3"
 EDIT_MODEL = "replicate/google/nano-banana"
+API_KEY = "sk-friend-02-3a4f2e9c8d7b6a5f4e3d2c1b0a9f8e7d"
 
 # ==============================================
 # 💬 CHAT API (OpenAI-compatible proxy)
