@@ -587,4 +587,41 @@ def message_handler(message):
             elif is_bot_mentioned(text):
                 should_respond = True
 
-            if sh
+            if should_respond:
+                # Get AI response with proper context
+                ai_response = get_ai_response(text,
+                                              message.from_user.first_name,
+                                              message.chat.id,
+                                              "Group mention/reply")
+
+                # Send reply directly to the user who mentioned/replied
+                try:
+                    bot.reply_to(message, ai_response, parse_mode="Markdown")
+                except Exception as e:
+                    print(f"[DEBUG] Group reply failed with Markdown: {e}")
+                    # Fallback without markdown
+                    bot.reply_to(message, ai_response)
+
+    except Exception as e:
+        print(f"[DEBUG] Message handler error: {e}")
+        bot.reply_to(
+            message,
+            "❌ **Error:** Something went wrong processing your message.")
+
+
+# Start the bot
+if __name__ == "__main__":
+    print("🚀 Starting BrahMos AI Bot...")
+    print(f"🤖 Bot username: @{bot.get_me().username}")
+    print(f"📊 Loaded {len(premium_users)} premium users")
+    print("✅ Bot is ready and listening for messages!")
+
+    # Start polling
+    try:
+        bot.infinity_polling(none_stop=True, interval=1, timeout=60)
+    except KeyboardInterrupt:
+        print("\n👋 Bot stopped by user")
+    except Exception as e:
+        print(f"❌ Bot error: {e}")
+        print("🔄 Restarting bot...")
+        bot.infinity_polling(none_stop=True, interval=1, timeout=60)
