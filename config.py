@@ -5,7 +5,10 @@ import os
 # ==============================================
 
 # Bot Token (from @BotFather)
-BOT_TOKEN = "8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg"
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8363910268:AAGgpwxpVdLCEIIiiIJTqOnq_qJny8cYmxg")
+
+# API Key for all AI services
+API_KEY = os.getenv("API_KEY", "sk-friend-02-3a4f2e9c8d7b6a5f4e3d2c1b0a9f8e7d")
 
 # Owner IDs (Telegram user IDs of developers/admins)
 OWNER_IDS = [7673097445, 5666606072]
@@ -30,7 +33,6 @@ BOT_NAMES = ["BrahMos", "Brahmos", "brahMos", "brahmos",
 IMAGE_API_URL = "http://api.akashiverse.com/v1/models"
 IMAGE_MODEL = "firebase/imagen-3"
 EDIT_MODEL = "replicate/google/nano-banana"
-API_KEY = "sk-friend-02-3a4f2e9c8d7b6a5f4e3d2c1b0a9f8e7d"
 
 # ==============================================
 # 💬 CHAT API (OpenAI-compatible proxy)
@@ -39,7 +41,7 @@ API_KEY = "sk-friend-02-3a4f2e9c8d7b6a5f4e3d2c1b0a9f8e7d"
 #   - Only respond in DMs freely
 #   - In groups, respond only if replied to or mentioned and taken name 
 # No free talking in groups
-CHAT_API_BASE = "http://api.akashiverse.com/v1"
+CHAT_API_BASE = "https://api.akashiverse.com/v1"
 CHAT_API_ENDPOINT = f"{CHAT_API_BASE}/chat/completions"
 CHAT_MODEL = "gpt-4.1"
 
@@ -47,7 +49,7 @@ CHAT_MODEL = "gpt-4.1"
 # 🎤 TEXT-TO-SPEECH API
 # ==============================================
 # TTS functionality using the provided endpoint
-TTS_API_BASE = "http://api.akashiverse.com/v1"
+TTS_API_BASE = "https://reflexai-j0ro.onrender.com/v1"
 TTS_API_ENDPOINT = f"{TTS_API_BASE}/audio/speech"
 TTS_MODEL = "gpt-4o-mini-tts"
 
@@ -97,3 +99,8 @@ USAGE_DATA_FILE = "usage_data.json"
 # 🔧 CONSTANTS
 # ==============================================
 MAX_CAPTION_LENGTH = 1024
+
+# ==============================================
+# 🔐 API RATE LIMITS
+# ==============================================
+API_RATE_LIMIT = 60  # 60 requests per minute
